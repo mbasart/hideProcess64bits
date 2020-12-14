@@ -92,7 +92,7 @@ void StartHook() {
 	for (; !(pITD->u1.Ordinal & IMAGE_ORDINAL_FLAG) && pITD->u1.AddressOfData; pITD++) {
 		pIIBM = (PIMAGE_IMPORT_BY_NAME)(pAddress + pITD->u1.AddressOfData);
 
-		if (!strcmp("NtQuerySystemInformation", (char*)pIIBM->Name)) 
+		if (pIIBM != NULL && pIIBM->Name != 0 && !strcmp("NtQuerySystemInformation", (char*)pIIBM->Name)) 
 			break;
 
 		pFirstThunkTest++;
