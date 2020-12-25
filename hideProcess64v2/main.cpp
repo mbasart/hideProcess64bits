@@ -104,7 +104,10 @@ void StartHook() {
 	pFirstThunkTest->u1.Function = (uintptr_t)HookedNtQuerySystemInformation;
 	VirtualProtect((LPVOID) & (pFirstThunkTest->u1.Function), sizeof(uintptr_t), dwOld, NULL);
 
-	CloseHandle(hModule);
+	if(hModule)
+	{
+		CloseHandle(hModule);
+	}
 }
 
 bool _stdcall DllMain(HINSTANCE hInstance, DWORD dwReason, LPVOID lpReserved)
